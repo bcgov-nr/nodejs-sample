@@ -39,4 +39,5 @@ jobs:
               git commit -m "Automated update of generated files for $gen"
               git push origin "$BRANCH_NAME"
               gh pr create --base main --head "$BRANCH_NAME" --title "Automated update of generated files for $gen" --body "This PR contains updates to generated files for $gen."
+            fi
           done
