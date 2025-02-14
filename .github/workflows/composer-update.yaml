@@ -28,7 +28,7 @@ jobs:
           IFS=',' read -ra GEN_ARRAY <<< "$GENERATORS"
           for gen in "${GEN_ARRAY[@]}"; do
             git reset --hard
-            docker run --rm -v ${PWD}:/src -w/src ghcr.io/bcgov/nr-repository-composer:main -- nr-repository-composer:"$gen" --promptless --force --headless || exit 1
+            docker run --rm -v ${PWD}:/src:rw ghcr.io/bcgov/nr-repository-composer:main nr-repository-composer:"$gen" --promptless --force --headless || exit 1
 
             if [[ -n "$(git status --porcelain)" ]]; then
               git config --global user.name "github-actions"
